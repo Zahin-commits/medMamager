@@ -1,5 +1,6 @@
 const schedule = require('node-schedule');
 const Medicine = require('./model/Medicine');
+const {sendEmail} = require('./email');
 process.env.TZ = 'Asia/Dhaka';
 
 
@@ -12,7 +13,7 @@ function getDayOfWeek() {
   
 
 exports.engine = ()=>{
-    schedule.scheduleJob('47 21 * * *',async()=>{
+    schedule.scheduleJob('34 12 * * *',async()=>{
     const today = getDayOfWeek();
     let report = '';
 
@@ -34,6 +35,7 @@ exports.engine = ()=>{
 });
     console.log('schedule Job');
     console.log("REPORT:", report);
+    sendEmail(report);
  });
 };
 
