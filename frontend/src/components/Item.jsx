@@ -1,20 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useAddQuantityMutation } from '../features/apiQuery'
 
 export const Item = ({med}) => {
-    const quantity = 10;
+    const [showPopup,setShowPopup] = useState(false);
+    const [quantity,setQuantity] = useState(0);
+
     const [addQuantity,{isLoading}] = useAddQuantityMutation();
     
     const handleQuantity =()=>{
-      addQuantity({id:med._id,quantity}).unwrap().then(res=>{
+      const quantityInt = parseInt(quantity);
+      addQuantity({id:med._id,quantity:quantityInt}).unwrap().then(res=>{
         console.log(res);
+        if(res){
+           setQuantity(0);
+           setShowPopup(false);
+        }
       })
     }
   return (
     <div className='item'>
+
+       {showPopup && <div className="popup">
+             <input type="number" 
+              min={0} max={100}
+              onChange={(e)=>{setQuantity(e.target.value)}}
+              value={quantity} />
+             <button onClick={handleQuantity} >add</button>
+             <button onClick={()=>{setShowPopup(false)}}>cancel</button>
+          </div>}
+
         <span className={`stock ${med.stock==0?'alert':''}`}>{med.stock}</span>
         <p>{med.name}</p>
-        <button onClick={handleQuantity} className='center'>+</button>
+        <button onClick={()=>{setShowPopup(true)}} className='center btn add'>+</button>
     </div>
   )
 }

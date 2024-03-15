@@ -45,6 +45,7 @@ exports.engine = ()=>{
 
 //'*/15 * * * * *' in every 15 seconds 
 // '0 0 * * *' everyday at 12am
+// 50 23 * * * everyday at 11:50pm 
 
 /* 
 *    *    *    *    *    *

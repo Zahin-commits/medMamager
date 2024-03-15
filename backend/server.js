@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const connectDB = require('./config/DB');
@@ -7,19 +8,17 @@ const medRouter = require('./router/MedicineRouter');
 const { engine } = require('./engine');
 
 
-function getDayOfWeek() {
-  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const today = new Date();
-  const dayIndex = today.getDay();
-  return days[dayIndex];
-}
-
 connectDB();
 engine();
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+app.use(cors({
+    credentials: true,
+    origin:"http://localhost:5173"
+}
+));
 
 app.get('/',(req,res)=>{
  res.json('server is online');
