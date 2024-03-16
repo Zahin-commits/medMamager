@@ -9,10 +9,10 @@ router.route('/')
 .patch(editMed)
 .delete();
 
-router.route('/:id',addMeds);
-
 router.route('/med/:id')
 .get(findOne)
 .patch(addQuantity);
+
+router.patch('/med/edit/:id',editMed);
 
 module.exports = router;

@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { useAddQuantityMutation } from '../features/apiQuery'
+import { EditItem } from './EditItem';
 
 export const Item = ({med}) => {
     const [showPopup,setShowPopup] = useState(false);
+    const [showEditPopup,setShowEditPopup] = useState(false);
     const [quantity,setQuantity] = useState(0);
 
     const [addQuantity,{isLoading}] = useAddQuantityMutation();
@@ -29,8 +31,13 @@ export const Item = ({med}) => {
              <button onClick={()=>{setShowPopup(false)}}>cancel</button>
           </div>}
 
+       {showEditPopup && <div className="popup">
+              <EditItem med={med}/>
+             <button onClick={()=>{setShowEditPopup(false)}}>cancel</button>
+          </div>}
+
         <span className={`stock ${med.stock==0?'alert':''}`}>{med.stock}</span>
-        <p>{med.name}</p>
+        <p className='title' onClick={()=>{setShowEditPopup(true)}} >{med.name}</p>
         <button onClick={()=>{setShowPopup(true)}} className='center btn add'>+</button>
     </div>
   )

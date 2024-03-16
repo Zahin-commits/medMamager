@@ -13,7 +13,7 @@
 }
 
 .popup{
- height: 150px;
+ /* height: 150px; */
  width: 200px;
  border: 2px solid black;
  position: absolute;
@@ -32,7 +32,7 @@
  align-items: center;
 }
 
-.item span{
+.item span.stock{
  margin-right: 5px;
  border-right: 2px solid gray;
  padding: 4px;
@@ -60,6 +60,30 @@
 }
 
 .item:hover{
- color: white;
  background-color: rgb(179, 179, 179);
+}
+
+.item p.title:hover{
+ color: white;
+}
+
+.add_btn{
+ text-decoration: none;
+ font-size: 18px;
+ color: white;
+ background-color: rgb(65, 228, 0);
+ border: none;
+ padding: 5px 10px;
+ border-radius: 3px;
+}
+
+.add_med--form{
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ border: 2px solid gray;
+ padding: 10px;
+ border-radius: 5px;
+ width: 300px;
+ margin: auto;
 }

@@ -12,13 +12,28 @@ export const medApiSlice =  apiSlice.injectEndpoints({
               providesTags: ['add'],
         }),
         
-        getAllMsg:builder.mutation({
+        addMed:builder.mutation({
             query:(data)=>({
-                url: `/message/get`,
-                body: data,
+                url: `/medicine`,
+                body: {name:data.name,stock:data.stock,
+                       dailyIntake:data.dailyIntake,
+                       redLine:data.redLine,
+                       intakeDates:['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+                },
                 method: 'POST',
                 credentials:"include"  
-            })
+            }),
+            invalidatesTags:["add"]
+        }),
+
+        editMed:builder.mutation({
+            query:(data)=>({
+                url: `/medicine/med/edit/${data.id}`,
+                body: {name:data.name,stock:data.stock,dailyIntake:data.dailyIntake,redLine:data.redLine},
+                method: 'PATCH',
+                credentials:"include"  
+            }),
+            invalidatesTags:["add"]
         }),
         
         addQuantity:builder.mutation({
@@ -34,4 +49,4 @@ export const medApiSlice =  apiSlice.injectEndpoints({
     })
 })
 
-export const {useGetMedListQuery ,useGetAllMsgMutation,useAddQuantityMutation} = medApiSlice;
+export const {useGetMedListQuery,useAddMedMutation,useEditMedMutation,useAddQuantityMutation} = medApiSlice;
