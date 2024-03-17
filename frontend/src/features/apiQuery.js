@@ -45,8 +45,21 @@ export const medApiSlice =  apiSlice.injectEndpoints({
             }),
             invalidatesTags:["add"]
         }),
+
+        deleteMed:builder.mutation({
+            query:(data)=>({
+                url: `/medicine/med/${data.id}`,
+                body: data,
+                method: 'DELETE',
+                credentials:"include"  
+            }),
+            invalidatesTags:["add"]
+        }),
         
     })
 })
 
-export const {useGetMedListQuery,useAddMedMutation,useEditMedMutation,useAddQuantityMutation} = medApiSlice;
+export const {useGetMedListQuery,useAddMedMutation,
+              useEditMedMutation,useAddQuantityMutation,
+              useDeleteMedMutation
+             } = medApiSlice;

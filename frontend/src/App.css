@@ -87,3 +87,10 @@
  width: 300px;
  margin: auto;
 }
+
+.btn.red{
+ color: white;
+ background-color: tomato;
+ margin-left: 5px;
+ border: 2px solid tomato;
+}

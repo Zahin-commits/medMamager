@@ -1,17 +1,17 @@
 const express = require('express');
-const { getMeds, addMeds, addQuantity, editMed, findOne } = require('../controller/medicine');
+const { getMeds, addMeds, addQuantity, editMed, findOne, deleteMed } = require('../controller/medicine');
 const router = express.Router();
 
 
 router.route('/')
 .get(getMeds)
 .post(addMeds)
-.patch(editMed)
-.delete();
+.patch(editMed);
 
 router.route('/med/:id')
 .get(findOne)
-.patch(addQuantity);
+.patch(addQuantity)
+.delete(deleteMed);
 
 router.patch('/med/edit/:id',editMed);
 

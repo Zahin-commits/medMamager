@@ -17,6 +17,10 @@ export const AddItem = () => {
     addMed({name,stock,dailyIntake,redLine}).unwrap().then(res=>{
       if(res.sucess){
         alert("Your medicine has been added successfully!");
+        setName('');
+        setDailyIntake(0);
+        setStock(0);
+        setRedLine(0);
       }
       console.log(res);
     });

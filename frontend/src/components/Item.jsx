@@ -32,7 +32,7 @@ export const Item = ({med}) => {
           </div>}
 
        {showEditPopup && <div className="popup">
-              <EditItem med={med}/>
+              <EditItem med={med} setPopup={setShowEditPopup} />
              <button onClick={()=>{setShowEditPopup(false)}}>cancel</button>
           </div>}
 

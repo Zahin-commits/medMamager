@@ -87,3 +87,17 @@ exports.addQuantity = async(req,res)=>{
     res.status(500).json({sucess:false, message:error.message});
  }
 }
+
+exports.deleteMed = async(req,res)=>{
+   const id = req.params.id;
+   if(!id){
+    return res.json({sucess:false,message:"medecine id required"});
+   }
+ try {
+   const med = await Medicine.findByIdAndDelete(id);
+
+   res.json({success:true,message:`${med.name} has been deleted`});
+ } catch (error) {
+   res.status(500).json({sucess:false, message:error.message});
+ }
+}
