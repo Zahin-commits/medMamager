@@ -13,7 +13,7 @@ function getDayOfWeek() {
   
 
 exports.engine = ()=>{
-    schedule.scheduleJob('34 12 * * *',async()=>{
+    schedule.scheduleJob('30 23 * * *',async()=>{
     const today = getDayOfWeek();
     let report = '';
 
@@ -39,12 +39,8 @@ exports.engine = ()=>{
  });
 };
 
-/* schedule.scheduleJob('0 0 * * *',function(){
-  console.log('hello world');
-}) */
 
 //'*/15 * * * * *' in every 15 seconds 
-// '0 0 * * *' everyday at 12am
 // 50 23 * * * everyday at 11:50pm 
 
 /* 
