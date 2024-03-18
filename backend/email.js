@@ -14,7 +14,7 @@ let transporter = nodemailer.createTransport({
    /*  user: process.env.EMAIL,
     pass: process.env.PASS */
     user: 'api',
-    pass: process.env.PASS2
+    pass: process.env.PASS
   }
 });
 

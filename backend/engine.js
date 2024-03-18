@@ -25,7 +25,7 @@ exports.engine = ()=>{
 
       let updatedStock = med.stock - med.dailyIntake;
       if(updatedStock <= med.redLine){
-        report += updatedStock <= 0? `Stock of ${med.name} is empty.\n` :`Only ${updatedStock} pills of ${med.name} remains on stock.\n`
+        report += updatedStock <= 0? `\n Stock of ${med.name} is empty.\n` :`\n Only ${updatedStock} pills of ${med.name} remains on stock.\n`
       //  console.log(`WARNING: you are running out of stock ${med.name}`);
       }
       updatedStock = updatedStock < 0? 0 : updatedStock;
